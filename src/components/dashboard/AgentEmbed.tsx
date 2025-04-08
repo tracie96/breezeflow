@@ -17,14 +17,14 @@ const AgentEmbed: React.FC = () => {
 }`;
 
   return (
-    <section className="px-6 pt-6 pb-10 mt-10 max-w-full bg-gray-900 rounded-3xl border border-solid border-[color:var(--Grey-900,#1D2939)] w-[674px] max-md:px-5">
-      <div className="flex gap-8 items-start w-full text-2xl font-medium text-white max-md:max-w-full">
-        <h2 className="flex-1 shrink w-full basis-0 min-w-60 max-md:max-w-full">
+    <section className="px-4 md:px-6 pt-4 md:pt-6 pb-6 md:pb-10 mt-6 md:mt-10 w-full md:max-w-[674px] bg-gray-900 rounded-3xl border border-solid border-[color:var(--Grey-900,#1D2939)]">
+      <div className="flex gap-4 md:gap-8 items-start w-full text-xl md:text-2xl font-medium text-white">
+        <h2 className="w-full">
           Add Voice Agent to Website
         </h2>
       </div>
-      <div className="mt-8 w-full max-md:max-w-full">
-        <p className="text-sm text-gray-400 max-md:max-w-full">
+      <div className="mt-4 md:mt-8 w-full">
+        <p className="text-sm text-gray-400">
           To embed your agent on your website,{" "}
           <span className="font-semibold text-[rgba(53,176,255,1)]">
             check out our tutorials

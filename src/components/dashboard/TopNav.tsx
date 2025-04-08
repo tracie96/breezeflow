@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 interface TopNavProps {
   title?: string;
+  onMenuClick?: () => void;
 }
 
 interface UserData {
@@ -14,7 +15,7 @@ interface UserData {
   password?: string;
 }
 
-const TopNav: React.FC<TopNavProps> = ({ title }) => {
+const TopNav: React.FC<TopNavProps> = ({ title, onMenuClick }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -88,12 +89,12 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
   };
 
   return (
-    <div className="justify-between items-center border-b-[color:var(--Grey-900,#1D2939)] bg-[#0A0F19] flex w-full gap-[40px_100px] flex-wrap px-10 py-5 border-b border-solid max-md:max-w-full max-md:px-5">
-      <div className="text-white text-2xl font-normal self-stretch my-auto">
+    <div className="justify-between items-center border-b-[color:var(--Grey-900,#1D2939)] bg-[#0A0F19] flex w-full gap-[40px_100px] flex-wrap px-4 md:px-10 py-5 border-b border-solid max-md:max-w-full">
+      <div className="text-white text-xl md:text-2xl font-normal self-stretch my-auto ml-10 md:ml-0">
         {currentTitle}
       </div>
-      <div className="self-stretch flex min-w-60 items-center gap-4 text-sm my-auto">
-        <div className="self-stretch flex min-w-60 items-center gap-2.5 my-auto">
+      <div className="self-stretch flex items-center gap-2 md:gap-4 text-sm my-auto">
+        <div className="hidden md:flex min-w-[60px] md:min-w-60 items-center gap-2.5 my-auto">
           <div className="text-white font-light self-stretch my-auto">
             Free trial ends in 7 days
           </div>
@@ -105,7 +106,7 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
         <div className="relative" ref={menuRef}>
           <img
             src="https://cdn.builder.io/api/v1/image/assets/6ab570d2ba5f4a1e8f0614bf834ae119/8202703a414f697573784d7989e58cd34275b89d?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-12 self-stretch shrink-0 my-auto rounded-[999px] cursor-pointer"
+            className="aspect-[1] object-contain w-10 md:w-12 self-stretch shrink-0 my-auto rounded-[999px] cursor-pointer"
             onClick={handleUserMenuClick}
             alt="User avatar"
           />

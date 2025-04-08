@@ -7,20 +7,20 @@ import AgentEmbed from "./AgentEmbed";
 const Dashboard: React.FC = () => {
   return (
     <main className="overflow-hidden bg-slate-950">
-      <div className="flex gap-5 max-md:flex-col">
-        <div className="w-[17%] max-md:ml-0 max-md:w-full">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-[17%] hidden md:block">
           <Sidebar />
         </div>
-        <div className="ml-5 w-[83%] max-md:ml-0 max-md:w-full">
-          <div className="w-full max-md:max-w-full">
+        <div className="w-full md:w-[83%] md:ml-5">
+          <div className="w-full">
             <TopNav />
-            <div className="px-10 mt-10 w-full max-md:px-5 max-md:max-w-full">
-              <header className="flex flex-wrap justify-between items-center">
-                <h1 className="flex-1 shrink self-stretch my-auto text-3xl font-medium text-white whitespace-nowrap basis-0 min-w-60 max-md:max-w-full">
+            <div className="px-4 md:px-10 mt-6 md:mt-10 w-full">
+              <header className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0">
+                <h1 className="text-2xl md:text-3xl font-medium text-white">
                   Breezelearn
                 </h1>
-                <div className="flex gap-4 self-stretch my-auto text-lg tracking-normal text-center text-white w-[234px]">
-                  <button className="gap-2.5 self-stretch px-6 py-4 h-full bg-blue-700 rounded-2xl border border-white border-solid w-[234px] max-md:px-5">
+                <div className="flex justify-center md:justify-end">
+                  <button className="gap-2.5 px-4 md:px-6 py-3 md:py-4 bg-blue-700 rounded-2xl border border-white border-solid w-full md:w-[234px] text-white text-base md:text-lg">
                     Test My Agent
                   </button>
                 </div>

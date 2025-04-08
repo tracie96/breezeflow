@@ -16,15 +16,15 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ code }) => {
   }, [code]);
 
   return (
-    <div className="w-full font-light max-md:max-w-full">
-      <div className="w-full max-md:max-w-full">
-        <label className="text-sm leading-none text-white max-md:max-w-full">
+    <div className="w-full font-light">
+      <div className="w-full">
+        <label className="text-sm leading-none text-white block">
           Copy and paste the code into your website's HTML file, right before
           the closing body tag
         </label>
-        <div className="flex flex-col justify-center p-5 mt-1.5 w-full text-base leading-6 text-gray-50 bg-gray-900 rounded-2xl border-solid border-[1.5px] border-[color:var(--Grey-900,#1D2939)] max-md:max-w-full">
-          <pre className="flex justify-between items-center w-full max-md:max-w-full">
-            <code className="flex-1 shrink gap-2 self-stretch my-auto w-full basis-0 min-w-60 max-md:max-w-full whitespace-pre-wrap">
+        <div className="flex flex-col justify-center p-3 md:p-5 mt-1.5 w-full text-sm md:text-base leading-6 text-gray-50 bg-gray-900 rounded-2xl border-solid border-[1.5px] border-[color:var(--Grey-900,#1D2939)] overflow-x-auto">
+          <pre className="flex justify-between items-center w-full">
+            <code className="w-full whitespace-pre-wrap break-all">
               {code}
             </code>
           </pre>
@@ -32,9 +32,9 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ code }) => {
       </div>
       <button
         onClick={handleCopy}
-        className="flex gap-2.5 justify-center items-center mt-8 px-6 py-4 text-lg font-medium tracking-normal text-center text-white rounded-2xl border border-solid bg-slate-800 border-slate-700 min-w-60 w-[250px] max-md:px-5"
+        className="flex gap-2 md:gap-2.5 justify-center items-center mt-4 md:mt-8 px-4 md:px-6 py-3 md:py-4 text-base md:text-lg font-medium tracking-normal text-center text-white rounded-xl md:rounded-2xl border border-solid bg-slate-800 border-slate-700 w-full md:w-[250px]"
       >
-        <div className="flex shrink-0 self-stretch my-auto w-6 h-6" />
+        <div className="flex shrink-0 self-stretch my-auto w-5 md:w-6 h-5 md:h-6" />
         <span className="self-stretch my-auto">
           {isCopied ? "Copied!" : "Copy to clipboard"}
         </span>
