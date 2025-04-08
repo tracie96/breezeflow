@@ -51,7 +51,7 @@ function WebsiteKnowledgeForm({ onClose, onSubmit }: WebsiteKnowledgeFormProps) 
         />
       </div>
 
-      <ActionButton onClick={handleSubmit}>Add knowledge</ActionButton>
+      <ActionButton onClick={handleSubmit} />
     </section>
   );
 }

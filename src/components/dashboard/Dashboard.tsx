@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Sidebar from "./Sidebar";
+import {Sidebar} from "./Sidebar";
 import TopNav from "./TopNav";
 import AgentEmbed from "./AgentEmbed";
 

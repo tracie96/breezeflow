@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import ProgressIndicator from "./ProgressIndicator";
-import AvatarSelector from "./AvatarSelector";
-import VoiceOption from "./VoiceOption";
-import ThemeToggle from "./ThemeToggle";
+// import AvatarSelector from "./AvatarSelector";
+// import VoiceOption from "./VoiceOption";
+// import ThemeToggle from "./ThemeToggle";
 
 const InputDesign: React.FC = () => {
   return (
@@ -11,7 +11,6 @@ const InputDesign: React.FC = () => {
       <ProgressIndicator />
 
       <div className="flex flex-col gap-8 w-full">
-        <AvatarSelector />
 
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium leading-5 text-white">
@@ -45,12 +44,7 @@ const InputDesign: React.FC = () => {
             Voice Selection
           </label>
           <div className="flex flex-wrap gap-4 max-md:gap-3 max-sm:gap-2">
-            <VoiceOption name="Kelly" selected={true} />
-            <VoiceOption name="Nik" selected={false} />
-            <VoiceOption name="Michael" selected={false} />
-            <VoiceOption name="Becca" selected={false} />
-            <VoiceOption name="Felicia" selected={false} />
-            <VoiceOption name="Oliver" selected={false} />
+        
           </div>
         </div>
 
@@ -86,7 +80,6 @@ const InputDesign: React.FC = () => {
           <label className="text-sm font-medium leading-5 text-white">
             Theme
           </label>
-          <ThemeToggle />
         </div>
       </div>
 
