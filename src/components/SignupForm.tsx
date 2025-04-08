@@ -23,6 +23,8 @@ const SignupForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Save user information to localStorage
+    localStorage.setItem("userData", JSON.stringify(formData));
     // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
     setShowVerification(true);

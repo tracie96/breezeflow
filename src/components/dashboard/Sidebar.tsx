@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart2, MessageSquare, Database, Settings } from "lucide-react";
+import { BarChart2, MessageSquare, Database, Settings, Cog } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -109,6 +109,21 @@ export const Sidebar: React.FC = () => {
                         <path d="M1.66675 10.7334V9.2667C1.66675 8.4 2.37508 7.68334 3.25008 7.68334C4.75841 7.68334 5.37508 6.6167 4.61675 5.30837C4.18341 4.55837 4.44175 3.58334 5.20008 3.15837L6.64175 2.30837C7.30008 1.9167 8.14175 2.1417 8.53341 2.8L8.63341 2.9667C9.38341 4.28334 10.6167 4.28334 11.3751 2.9667L11.4751 2.8C11.8667 2.1417 12.7084 1.9167 13.3667 2.30837L14.8084 3.15837C15.5667 3.58334 15.8251 4.55837 15.3917 5.30837C14.6334 6.6167 15.2501 7.68334 16.7584 7.68334C17.6251 7.68334 18.3417 8.3917 18.3417 9.2667V10.7334C18.3417 11.6 17.6334 12.3167 16.7584 12.3167C15.2501 12.3167 14.6334 13.3834 15.3917 14.6917C15.8251 15.45 15.5667 16.4167 14.8084 16.8417L13.3667 17.6917C12.7084 18.0834 11.8667 17.8584 11.4751 17.2L11.3751 17.0334C10.6251 15.7167 9.39175 15.7167 8.63341 17.0334L8.53341 17.2C8.14175 17.8584 7.30008 18.0834 6.64175 17.6917L5.20008 16.8417C4.44175 16.4167 4.18341 15.45 4.61675 14.6917C5.37508 13.3834 4.75841 12.3167 3.25008 12.3167C2.37508 12.3167 1.66675 11.6 1.66675 10.7334Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                       <span>Agent Configuration</span>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/dashboard/settings"
+                  className={`flex w-full flex-col overflow-hidden items-stretch justify-center mt-3 px-3 py-2 rounded-lg hover:bg-[#1D2939] ${
+                    isActive('/dashboard/settings') ? 'bg-[#0A0F19] text-white border border-[#667085]' : ''
+                  }`}
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="self-stretch flex items-center gap-1.5 my-auto">
+                      <Cog className="w-5 h-5" />
+                      <span>Settings</span>
                     </div>
                   </div>
                 </Link>

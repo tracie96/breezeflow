@@ -1,16 +1,39 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface TopNavProps {
   title?: string;
 }
 
+interface UserData {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+}
+
 const TopNav: React.FC<TopNavProps> = ({ title }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [userData, setUserData] = useState<UserData>({});
   const menuRef = useRef<HTMLDivElement>(null);
+  
+  // Check for user data in localStorage on component mount
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      try {
+        const parsedUserData = JSON.parse(storedUserData);
+        setUserData(parsedUserData);
+      } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+      }
+    }
+    // Removed the automatic redirect when no userData is found
+  }, []);
   
   // Determine the current section based on the pathname
   const getCurrentTitle = () => {
@@ -19,6 +42,7 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
     if (pathname?.includes("/dashboard/conversations")) return "Conversations";
     if (pathname?.includes("/dashboard/knowledge")) return "Knowledge Base";
     if (pathname?.includes("/dashboard/configuration")) return "Agent Configuration";
+    if (pathname?.includes("/dashboard/settings")) return "Settings";
     return title || "Dashboard";
   };
 
@@ -45,12 +69,22 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
 
   const handleSettingsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Add settings navigation logic here
+    router.push("/dashboard/settings");
   };
 
   const handleLogoutClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Add logout logic here
+    // Clear user data from localStorage on logout
+    localStorage.removeItem('userData');
+    router.push("/");
+  };
+
+  // Display initials for the avatar
+  const getInitials = () => {
+    if (userData.firstName || userData.lastName) {
+      return `${userData.firstName?.[0] || ''}${userData.lastName?.[0] || ''}`.toUpperCase();
+    }
+    return 'U';
   };
 
   return (
@@ -81,11 +115,15 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
               <div className="p-4 border-b border-[#293145]">
                 <div className="flex items-center">
                   <div className="w-14 h-14 rounded-full bg-[#6a5fe2] flex items-center justify-center mr-3">
-                    <span className="text-white text-xl">BS</span>
+                    <span className="text-white text-xl">{getInitials()}</span>
                   </div>
                   <div>
-                    <h3 className="text-white text-lg font-medium">Braiden Scott</h3>
-                    <p className="text-gray-400 text-sm">braidenscott@gmail.com</p>
+                    <h3 className="text-white text-lg font-medium">
+                      {userData.firstName && userData.lastName 
+                        ? `${userData.firstName} ${userData.lastName}` 
+                        : 'User'}
+                    </h3>
+                    <p className="text-gray-400 text-sm">{userData.email || 'No email available'}</p>
                   </div>
                 </div>
               </div>
