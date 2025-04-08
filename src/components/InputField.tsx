@@ -1,11 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent } from "react";
 
 interface InputFieldProps {
   label: string;
   placeholder: string;
   type?: string;
   className?: string;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -13,9 +16,10 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   type = "text",
   className = "",
+  value,
+  onChange,
+  required = false,
 }) => {
-  const [value, setValue] = useState("");
-
   return (
     <div className={className}>
       <div className="w-full">
@@ -28,7 +32,8 @@ const InputField: React.FC<InputFieldProps> = ({
               type={type}
               placeholder={placeholder}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={onChange}
+              required={required}
               className="flex-1 shrink gap-2 self-stretch my-auto w-full basis-0 min-w-60 bg-transparent outline-none"
             />
             {type === "password" && (

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -24,17 +26,32 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setShowUserMenu(false);
       }
-    }
+    };
     
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuRef]);
+  }, []);
+
+  const handleUserMenuClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowUserMenu(!showUserMenu);
+  };
+
+  const handleSettingsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Add settings navigation logic here
+  };
+
+  const handleLogoutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Add logout logic here
+  };
 
   return (
     <div className="justify-between items-center border-b-[color:var(--Grey-900,#1D2939)] bg-[#0A0F19] flex w-full gap-[40px_100px] flex-wrap px-10 py-5 border-b border-solid max-md:max-w-full max-md:px-5">
@@ -55,7 +72,8 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
           <img
             src="https://cdn.builder.io/api/v1/image/assets/6ab570d2ba5f4a1e8f0614bf834ae119/8202703a414f697573784d7989e58cd34275b89d?placeholderIfAbsent=true"
             className="aspect-[1] object-contain w-12 self-stretch shrink-0 my-auto rounded-[999px] cursor-pointer"
-            onClick={() => setShowUserMenu(!showUserMenu)}
+            onClick={handleUserMenuClick}
+            alt="User avatar"
           />
           
           {showUserMenu && (
@@ -72,10 +90,16 @@ const TopNav: React.FC<TopNavProps> = ({ title }) => {
                 </div>
               </div>
               <div className="py-2">
-                <button className="w-full text-left px-4 py-3 text-white hover:bg-[#232D42] transition-colors duration-200">
+                <button 
+                  onClick={handleSettingsClick}
+                  className="w-full text-left px-4 py-3 text-white hover:bg-[#232D42] transition-colors duration-200"
+                >
                   Settings
                 </button>
-                <button className="w-full text-left px-4 py-3 text-[#FF4D4F] hover:bg-[#232D42] transition-colors duration-200">
+                <button 
+                  onClick={handleLogoutClick}
+                  className="w-full text-left px-4 py-3 text-[#FF4D4F] hover:bg-[#232D42] transition-colors duration-200"
+                >
                   Log Out
                 </button>
               </div>

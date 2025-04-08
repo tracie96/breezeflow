@@ -6,6 +6,7 @@ interface ButtonProps {
   icon?: ReactNode;
   onClick?: () => void;
   className?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   onClick,
   className = "",
+  type = "button",
 }) => {
   const baseClasses =
     "gap-2.5 px-6 py-4 w-full text-lg font-medium tracking-normal text-center rounded-2xl border border-solid";
@@ -27,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`${baseClasses} ${variantClasses[variant]} ${className} flex justify-center items-center max-md:px-5 max-md:max-w-full`}
       onClick={onClick}
+      type={type}
     >
       {icon && icon}
       <span className="self-stretch my-auto">{children}</span>
